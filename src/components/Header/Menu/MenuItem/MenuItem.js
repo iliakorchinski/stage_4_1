@@ -1,4 +1,3 @@
-// import { links } from '../../../../data/links';
 import { useState } from 'react';
 import { Dropdown } from './Dropdown/Dropdown';
 import classes from './MenuItem.module.css';
@@ -9,6 +8,7 @@ export const MenuItem = ({ links }) => {
       {links.map((link) => {
         return (
           <div
+            key={link.title}
             className={classes['navbar-link-container']}
             onMouseEnter={() => setHoveredLink(link.title)}
             onMouseLeave={() => setHoveredLink(null)}
