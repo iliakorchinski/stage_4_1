@@ -1,0 +1,15 @@
+.navLinks {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #111;
+}
+
+@media (max-width: 900px) {
+  .navLinks {
+    display: none;
+  }
+}
