@@ -1,0 +1,33 @@
+.projectButton {
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  display: inline-block;
+  text-decoration: none;
+  color: #111;
+  padding: 1rem 2rem;
+  border: 2px solid #111;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: 0.2s ease;
+  z-index: 0;
+}
+
+.projectButton::before {
+  content: '';
+  position: absolute;
+  background-color: #111;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transition: 0.2s ease;
+}
+.projectButton:hover {
+  background-color: transparent;
+  color: #fff;
+}
+.projectButton:hover::before {
+  width: 100%;
+}

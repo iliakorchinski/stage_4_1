@@ -1,0 +1,13 @@
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 2rem 0;
+}
+
+@media (max-width: 900px) {
+  .contentContainer {
+    padding-top: 0;
+  }
+}
