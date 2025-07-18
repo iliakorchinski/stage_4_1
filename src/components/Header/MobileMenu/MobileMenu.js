@@ -5,7 +5,6 @@ import { SidePanel } from './SidePanel/SidePanel';
 import { useState } from 'react';
 export const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen);
   const handleOpenMenu = () => {
     setIsOpen(true);
   };
