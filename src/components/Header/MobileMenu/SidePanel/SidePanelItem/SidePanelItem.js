@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Dropdown } from '../../../Menu/MenuItem/Dropdown/Dropdown';
+import { Dropdown } from '../../../DesktopMenu/MenuItem/Dropdown/Dropdown';
 import classes from './SidePanelItem.module.css';
 export const SidePanelItem = ({ links }) => {
   const [isSelected, setIsSelected] = useState(null);

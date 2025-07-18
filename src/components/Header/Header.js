@@ -1,7 +1,6 @@
 import logo from '../../assets/icons/spring-logo.svg';
 import classes from './Header.module.css';
 import { Menu } from './Menu/Menu';
-import { BurgerMenu } from './MobileMenu/MobileMenu';
 
 export const Header = () => {
   return (
@@ -14,7 +13,6 @@ export const Header = () => {
             </a>
           </div>
           <Menu />
-          <BurgerMenu />
         </div>
       </nav>
     </header>
