@@ -1,0 +1,30 @@
+.crossIcon {
+  position: relative;
+  cursor: pointer;
+  top: 0;
+  right: 1rem;
+  z-index: 100;
+}
+.crossIcon button {
+  all: unset;
+}
+
+.burgerMenu {
+  display: block;
+  align-content: center;
+
+  width: 3rem;
+  height: 3rem;
+}
+.burgerMenu button {
+  all: unset;
+  cursor: pointer;
+}
+.burgerMenu img {
+  width: 60%;
+  height: 60%;
+}
+
+.open {
+  transform: translateY(0);
+}

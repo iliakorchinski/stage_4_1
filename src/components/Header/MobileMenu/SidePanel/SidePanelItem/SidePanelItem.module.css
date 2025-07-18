@@ -1,0 +1,56 @@
+.sideMenuNavigation {
+  padding: 3rem;
+}
+
+.sideMenuNavigation span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  line-height: 3rem;
+  border-bottom: 1px solid #ffffff66;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+  margin: 1rem 0;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.sideMenuNavigation span:hover {
+  color: #6db33f;
+}
+
+.sideMenuNavigation span::after {
+  content: '';
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-image: url('../../../../../assets/icons/arrow-down-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.sideMenuList {
+  display: block;
+  list-style: none;
+}
+
+.sideMenuList li {
+  height: 2.25rem;
+}
+
+.sideMenuList a {
+  text-decoration: none;
+  color: #98afae;
+  align-content: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.25rem;
+}
+
+.sideMenuList a:hover {
+  color: #6db33f;
+}

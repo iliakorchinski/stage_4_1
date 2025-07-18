@@ -1,0 +1,10 @@
+.navLinks {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+}

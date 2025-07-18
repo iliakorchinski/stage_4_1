@@ -1,0 +1,12 @@
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.resultsNotFound {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+  color: #61717d;
+  padding: 2rem;
+}
