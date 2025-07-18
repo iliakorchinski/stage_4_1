@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
+import { MenuItemProps } from './MenuItem.types';
 import { Dropdown } from './Dropdown/Dropdown';
 import classes from './MenuItem.module.css';
-export const MenuItem = ({ links }) => {
-  const [hoveredLink, setHoveredLink] = useState(null);
+export const MenuItem: FC<MenuItemProps> = ({ links }) => {
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   return (
     <div className={classes['links-container']}>
       {links.map((link) => {

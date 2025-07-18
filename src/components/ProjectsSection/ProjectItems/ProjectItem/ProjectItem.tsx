@@ -1,6 +1,8 @@
+import { FC } from 'react';
+import { ProjectItemProps } from './ProjectItem.types';
 import classes from './ProjectItem.module.css';
 
-export const ProjectItem = ({ projects }) => {
+export const ProjectItem: FC<ProjectItemProps> = ({ projects }) => {
   return (
     <div className={classes.listContainer}>
       {projects.map((project) => {
