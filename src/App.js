@@ -7,12 +7,11 @@ const App = () => {
   return (
     <>
       <Header />
-      <main>
-        <ProjectsOverview />
-        <SearchProvider>
-          <ProjectsSection />
-        </SearchProvider>
-      </main>
+
+      <ProjectsOverview />
+      <SearchProvider>
+        <ProjectsSection />
+      </SearchProvider>
     </>
   );
 };

@@ -4,9 +4,7 @@ import classes from './ProjectsOverview.module.css';
 export const ProjectsOverview = () => {
   return (
     <section className={classes.projects}>
-      <div className={classes.projectsContainer}>
-        <ProjectsContainer />
-      </div>
+      <ProjectsContainer />
       <div className={classes.extraBorder}></div>
     </section>
   );
