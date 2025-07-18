@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { DesktopMenu } from '../DesktopMenu/DesktopMenu';
-import { BurgerMenu } from '../MobileMenu/MobileMenu';
+import { MobileMenu } from '../MobileMenu/MobileMenu';
 
 export const Menu = () => {
   const [screenWidth, setScreenWidth] = useState(() => window.innerWidth);
@@ -11,5 +11,5 @@ export const Menu = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return <>{screenWidth > 900 ? <DesktopMenu /> : <BurgerMenu />}</>;
+  return <>{screenWidth > 900 ? <DesktopMenu /> : <MobileMenu />}</>;
 };

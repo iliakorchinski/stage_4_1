@@ -3,7 +3,7 @@ import classes from './MobileMenu.module.css';
 import IconCross from '../../../assets/icons/cross-icon.svg';
 import { SidePanel } from './SidePanel/SidePanel';
 import { useState } from 'react';
-export const BurgerMenu = () => {
+export const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpenMenu = () => {
     setIsOpen(true);
