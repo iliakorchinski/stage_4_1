@@ -10,7 +10,7 @@
 }
 
 .burgerMenu {
-  display: none;
+  display: block;
   align-content: center;
 
   width: 3rem;
@@ -27,10 +27,4 @@
 
 .open {
   transform: translateY(0);
-}
-
-@media (max-width: 900px) {
-  .burgerMenu {
-    display: block;
-  }
 }
