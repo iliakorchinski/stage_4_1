@@ -1,8 +1,12 @@
 import { FC, useState } from 'react';
 import { Dropdown } from '../../../DesktopMenu/MenuItem/Dropdown/Dropdown';
 import classes from './SidePanelItem.module.css';
-import { MenuItemProps } from '../../../DesktopMenu/MenuItem/MenuItem.types';
-export const SidePanelItem: FC<MenuItemProps> = ({ links }) => {
+import { Link } from '../../../../../types/link';
+type SidePanelItemProps = {
+  links: Link[];
+};
+
+export const SidePanelItem: FC<SidePanelItemProps> = ({ links }) => {
   const [isSelected, setIsSelected] = useState<string | null>(null);
   const [toggle, setToggle] = useState(false);
   const handleSelect = (title: string) => {

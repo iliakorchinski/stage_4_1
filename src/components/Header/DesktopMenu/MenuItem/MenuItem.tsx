@@ -1,7 +1,13 @@
 import { FC, useState } from 'react';
-import { MenuItemProps } from './MenuItem.types';
 import { Dropdown } from './Dropdown/Dropdown';
 import classes from './MenuItem.module.css';
+
+import { Link } from '../../../../types/link';
+
+type MenuItemProps = {
+  links: Link[];
+};
+
 export const MenuItem: FC<MenuItemProps> = ({ links }) => {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   return (

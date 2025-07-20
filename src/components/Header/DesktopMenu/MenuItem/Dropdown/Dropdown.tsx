@@ -1,5 +1,10 @@
 import { FC } from 'react';
-import { DropdownProps } from './Dropdown.types';
+
+type DropdownProps = {
+  links: string[];
+  className?: string;
+};
+
 export const Dropdown: FC<DropdownProps> = ({ links, className }) => {
   return (
     <ul className={className}>

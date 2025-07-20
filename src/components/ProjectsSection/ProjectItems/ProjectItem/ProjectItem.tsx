@@ -1,6 +1,11 @@
 import { FC } from 'react';
-import { ProjectItemProps } from './ProjectItem.types';
 import classes from './ProjectItem.module.css';
+
+import { Project } from '../../../../types/project';
+
+type ProjectItemProps = {
+  projects: Project[];
+};
 
 export const ProjectItem: FC<ProjectItemProps> = ({ projects }) => {
   return (
