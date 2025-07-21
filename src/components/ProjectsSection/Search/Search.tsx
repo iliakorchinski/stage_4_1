@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import { useContext, ChangeEvent } from 'react';
 import { SearchContext } from '../../../context/SearchContext';
 import classes from './Search.module.css';
 import crossIcon from '../../../assets/icons/cross-icon-green.svg';
 export const Search = () => {
   const { searchTerm, setSearchTerm } = useContext(SearchContext);
-  const handleSearchChange = (event) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
   return (

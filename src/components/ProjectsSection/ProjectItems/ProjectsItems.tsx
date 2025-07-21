@@ -8,15 +8,15 @@ import { useDebounce } from '../../../hooks/useDebouce';
 export const ProjectsItems = () => {
   const { searchTerm } = useContext(SearchContext);
   const debouncedSearchTerm = useDebounce(searchTerm);
-  const filteredProjects =
-    debouncedSearchTerm &&
-    projects.filter(
-      (item) =>
-        item.description
-          .toLowerCase()
-          .includes(debouncedSearchTerm.toLowerCase()) ||
-        item.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-    );
+  const filteredProjects = debouncedSearchTerm
+    ? projects.filter(
+        (item) =>
+          item.description
+            .toLowerCase()
+            .includes(debouncedSearchTerm.toLowerCase()) ||
+          item.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+      )
+    : [];
   return (
     <div className={classes.listContainer}>
       {!debouncedSearchTerm && <ProjectItem projects={projects} />}
