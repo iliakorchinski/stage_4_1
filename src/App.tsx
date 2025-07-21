@@ -1,19 +1,8 @@
-import { Header } from './components/Header/Header';
-import { ProjectsOverview } from './components/ProjectsOverview/ProjectsOverview';
-import { ProjectsSection } from './components/ProjectsSection/ProjectsSection';
-import { SearchProvider } from './context/SearchContext';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes/router';
 
 const App = () => {
-  return (
-    <>
-      <Header />
-
-      <ProjectsOverview />
-      <SearchProvider>
-        <ProjectsSection />
-      </SearchProvider>
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
