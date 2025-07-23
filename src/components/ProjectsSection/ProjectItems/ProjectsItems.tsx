@@ -1,12 +1,12 @@
 import { ProjectItem } from './ProjectItem/ProjectItem';
 import { projects } from '../../../data/projects';
 import classes from './ProjectsItems.module.css';
-import { useContext } from 'react';
-import { SearchContext } from '../../../context/SearchContext';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store/rootReducer';
 import { useDebounce } from '../../../hooks/useDebouce';
 
 export const ProjectsItems = () => {
-  const { searchTerm } = useContext(SearchContext);
+  const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
   const debouncedSearchTerm = useDebounce(searchTerm);
   const filteredProjects = debouncedSearchTerm
     ? projects.filter(

@@ -1,11 +1,14 @@
-import { useContext, ChangeEvent } from 'react';
-import { SearchContext } from '../../../context/SearchContext';
+import { ChangeEvent } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../../store/rootReducer';
+import { setSearchTerm } from '../../../store/searchSlice';
 import classes from './Search.module.css';
 import crossIcon from '../../../assets/icons/cross-icon-green.svg';
 export const Search = () => {
-  const { searchTerm, setSearchTerm } = useContext(SearchContext);
+  const dispatch = useDispatch();
+  const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+    dispatch(setSearchTerm(event.target.value));
   };
   return (
     <div role="search" className={classes.searchContainer}>
@@ -19,7 +22,7 @@ export const Search = () => {
         <button
           type="button"
           className={classes.clearInputBtn}
-          onClick={() => setSearchTerm('')}
+          onClick={() => dispatch(setSearchTerm(''))}
         >
           <img src={crossIcon} alt="Clear search" />
         </button>
