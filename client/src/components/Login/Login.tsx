@@ -56,9 +56,7 @@ export const Login = () => {
           <label>Password:</label>
           <input type="password" name="password" onChange={handleChangeField} />
         </div>
-        {userData.isError && (
-          <p className={classes.error}>Invalid credentials</p>
-        )}
+        {userData.isError && <p className={classes.error}>Invalid credentials</p>}
 
         {!userData.isError && (
           <button type="submit" className={classes.button}>
