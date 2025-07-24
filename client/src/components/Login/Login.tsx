@@ -5,7 +5,6 @@ import { login } from '../../store/authSlice';
 import { useDispatch } from 'react-redux';
 
 export const Login = () => {
-  console.log('Login component rendered');
   const initialState = { username: '', password: '', isError: false };
   const navigate = useNavigate();
   const dispatch = useDispatch();
