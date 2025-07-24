@@ -8,10 +8,7 @@ const initialState: SearchState = {
 
 type SearchAction = { type: string; payload: string };
 
-export const searchReducer = (
-  state = initialState,
-  action: SearchAction
-): SearchState => {
+export const searchReducer = (state = initialState, action: SearchAction): SearchState => {
   switch (action.type) {
     case 'SET_SEARCH_TERM':
       return { ...state, searchTerm: action.payload };

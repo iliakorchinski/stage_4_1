@@ -17,13 +17,7 @@ export const links = [
   {
     title: 'Learn',
     url: '#',
-    nestedLinks: [
-      'Overview',
-      'Quickstart',
-      'Guides',
-      'Blog',
-      'Security Advisories',
-    ],
+    nestedLinks: ['Overview', 'Quickstart', 'Guides', 'Blog', 'Security Advisories'],
   },
   {
     title: 'Projects',

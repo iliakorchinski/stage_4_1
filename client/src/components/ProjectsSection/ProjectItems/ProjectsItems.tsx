@@ -17,7 +17,7 @@ export const ProjectsItems = () => {
         const response = await fetch(
           `http://localhost:3001/api/projects${
             debouncedSearchTerm ? `?search=${debouncedSearchTerm}` : ''
-          }`
+          }`,
         );
         const data = await response.json();
         setProjects(data);
@@ -34,9 +34,7 @@ export const ProjectsItems = () => {
       {projects.length > 0 ? (
         <ProjectItem projects={projects} />
       ) : (
-        <p className={classes.resultsNotFound}>
-          Oooops... No results found... Try again!
-        </p>
+        <p className={classes.resultsNotFound}>Oooops... No results found... Try again!</p>
       )}
     </div>
   );
