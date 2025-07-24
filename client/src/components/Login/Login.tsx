@@ -5,6 +5,7 @@ import { login } from '../../store/authSlice';
 import { useDispatch } from 'react-redux';
 
 export const Login = () => {
+  console.log('Login component rendered');
   const initialState = { username: '', password: '', isError: false };
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -56,9 +57,7 @@ export const Login = () => {
           <label>Password:</label>
           <input type="password" name="password" onChange={handleChangeField} />
         </div>
-        {userData.isError && (
-          <p className={classes.error}>Invalid credentials</p>
-        )}
+        {userData.isError && <p className={classes.error}>Invalid credentials</p>}
 
         {!userData.isError && (
           <button type="submit" className={classes.button}>
