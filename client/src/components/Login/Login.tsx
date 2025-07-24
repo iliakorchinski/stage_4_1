@@ -3,7 +3,6 @@ import { Form, useNavigate } from 'react-router-dom';
 import classes from './Login.module.css';
 import { login } from '../../store/authSlice';
 import { useDispatch } from 'react-redux';
-import { User } from '../../data/user';
 
 export const Login = () => {
   const initialState = { username: '', password: '', isError: false };
@@ -22,18 +21,26 @@ export const Login = () => {
     });
   }, [userData.password, userData.username]);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (
-      userData.username === User.username &&
-      userData.password === User.password
-    ) {
+    try {
+      const response = await fetch('http://localhost:3001/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+      if (!response.ok) {
+        setUserData((prevState) => {
+          return { ...prevState, isError: true };
+        });
+        throw new Error('Authentication failed');
+      }
       dispatch(login());
       navigate('/');
-    } else {
-      setUserData((prevState) => {
-        return { ...prevState, isError: true };
-      });
+    } catch (err) {
+      console.error('Error:', err);
     }
   };
 
