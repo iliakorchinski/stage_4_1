@@ -5,7 +5,7 @@ on:
     paths:
       - 'client/**'
     branches:
-      - feat/implement_node_server
+      - main
 
 jobs:
   lint-and-format:
