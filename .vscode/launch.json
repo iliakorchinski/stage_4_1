@@ -10,6 +10,20 @@
       "protocol": "inspector",
       "skipFiles": ["<node_internals>/**"],
       "timeout": 10000
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug current test file (client)",
+      "program": "${workspaceFolder}/client/node_modules/.bin/jest",
+      "args": ["${relativeFile}", "--runInBand"],
+      "cwd": "${workspaceFolder}/client",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/client/node_modules/jest/bin/jest.js"
+      }
     }
   ]
 }
