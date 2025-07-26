@@ -19,7 +19,7 @@ describe('authThunk', () => {
 
     await authThunk('testuser', 'password')(dispatch);
 
-    expect(fetch).toHaveBeenCalledWith('http://localhost:3000/api/login', {
+    expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username: 'testuser', password: 'password' }),
