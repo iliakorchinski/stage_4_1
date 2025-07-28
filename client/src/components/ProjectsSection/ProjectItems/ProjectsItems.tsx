@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/rootReducer';
 import { useDebounce } from '../../../hooks/useDebouce';
 import { Project } from '../../../types/project';
+import { fetchProjects } from '../../../services/getProjects';
 
 export const ProjectsItems = () => {
   const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
@@ -12,22 +13,7 @@ export const ProjectsItems = () => {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:3001/api/projects${
-            debouncedSearchTerm ? `?search=${debouncedSearchTerm}` : ''
-          }`,
-        );
-        const data = await response.json();
-        setProjects(data);
-      } catch (err) {
-        console.error(err);
-        setProjects([]);
-      }
-    };
-
-    fetchProjects();
+    fetchProjects(debouncedSearchTerm, setProjects);
   }, [debouncedSearchTerm]);
   return (
     <div className={classes.listContainer}>

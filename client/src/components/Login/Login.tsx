@@ -3,7 +3,7 @@ import { Form, useNavigate } from 'react-router-dom';
 import classes from './Login.module.css';
 
 import { useAppDispatch } from '../../store/hooks';
-import { authThunk } from '../../store/authThunk';
+import { loginUser } from '../../services/userLogin';
 
 export const Login = () => {
   const initialState = { username: '', password: '', isError: false };
@@ -24,15 +24,15 @@ export const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    try {
-      await dispatch(authThunk(userData.username, userData.password));
-      navigate('/');
-    } catch (error) {
-      setUserData((prevState) => {
-        return { ...prevState, isError: true };
+    await loginUser(dispatch, userData.username, userData.password)
+      .then(() => {
+        navigate('/');
+      })
+      .catch((err) => {
+        setUserData((prevState) => {
+          return { ...prevState, isError: true };
+        });
       });
-      console.error('Login error:', error);
-    }
   };
 
   return (
