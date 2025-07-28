@@ -4,8 +4,6 @@ on:
   pull_request:
     paths:
       - 'client/**'
-    branches:
-      - feat/implement_node_server
 
 jobs:
   lint-and-format:

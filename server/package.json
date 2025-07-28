@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.ts"
+    "start": "nodemon src/index.ts",
+    "dev:debug": "ts-node-dev --respawn --inspect=9229 src/index.ts"
   },
   "keywords": [],
   "author": "",
