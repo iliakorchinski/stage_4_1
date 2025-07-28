@@ -20,10 +20,7 @@ export const SidePanelItem: FC<SidePanelItemProps> = ({ links }) => {
           <div key={link.title} onClick={() => handleSelect(link.title)}>
             <span>{link.title}</span>
             {isSelected === link.title && toggle && (
-              <Dropdown
-                links={link.nestedLinks}
-                className={classes.sideMenuList}
-              />
+              <Dropdown links={link.nestedLinks} className={classes.sideMenuList} />
             )}
           </div>
         ))}

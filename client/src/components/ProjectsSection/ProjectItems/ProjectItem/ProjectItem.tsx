@@ -24,16 +24,10 @@ export const ProjectItem: FC<ProjectItemProps> = ({ projects }) => {
               </div>
 
               <div>
-                <p className={classes.listItemDescription}>
-                  {project.description}
-                </p>
+                <p className={classes.listItemDescription}>{project.description}</p>
                 <div>
-                  <span className={classes.listItemVersion}>
-                    {project.version}
-                  </span>
-                  <span className={classes.additionalVersions}>
-                    {project.otherVersions}
-                  </span>
+                  <span className={classes.listItemVersion}>{project.version}</span>
+                  <span className={classes.additionalVersions}>{project.otherVersions}</span>
                 </div>
               </div>
             </a>

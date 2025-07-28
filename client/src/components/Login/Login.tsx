@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Form, useNavigate } from 'react-router-dom';
 import classes from './Login.module.css';
-import { login } from '../../store/authSlice';
-import { useDispatch } from 'react-redux';
+
+import { useAppDispatch } from '../../store/hooks';
+import { authThunk } from '../../store/authThunk';
 
 export const Login = () => {
   const initialState = { username: '', password: '', isError: false };
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [userData, setUserData] = useState(initialState);
   const handleChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserData((prevState) => {
@@ -24,23 +25,13 @@ export const Login = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-      if (!response.ok) {
-        setUserData((prevState) => {
-          return { ...prevState, isError: true };
-        });
-        throw new Error('Authentication failed');
-      }
-      dispatch(login());
+      await dispatch(authThunk(userData.username, userData.password));
       navigate('/');
-    } catch (err) {
-      console.error('Error:', err);
+    } catch (error) {
+      setUserData((prevState) => {
+        return { ...prevState, isError: true };
+      });
+      console.error('Login error:', error);
     }
   };
 
@@ -56,9 +47,7 @@ export const Login = () => {
           <label>Password:</label>
           <input type="password" name="password" onChange={handleChangeField} />
         </div>
-        {userData.isError && (
-          <p className={classes.error}>Invalid credentials</p>
-        )}
+        {userData.isError && <p className={classes.error}>Invalid credentials</p>}
 
         {!userData.isError && (
           <button type="submit" className={classes.button}>
