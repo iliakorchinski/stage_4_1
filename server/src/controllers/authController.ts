@@ -1,9 +1,13 @@
 import { Request, Response } from 'express';
+import { PrismaClient } from '@prisma/client';
 import { mockUser } from '../data/user';
 
-export const login = (req: Request, res: Response) => {
+const prisma = new PrismaClient();
+
+export const login = async (req: Request, res: Response) => {
   const { username, password } = req.body;
-  if (username === mockUser.username && password === mockUser.password) {
+  const user = await prisma.user.findFirst({ where: { username, password } });
+  if (user) {
     return res.status(200).json({ message: 'Login successful' });
   }
   return res.status(401).json({ message: 'Invalid credentials' });
