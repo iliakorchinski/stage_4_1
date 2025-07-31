@@ -17,9 +17,12 @@ model projects {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  username String
-  password String
+  id        Int     @id @default(autoincrement())
+  username  String  @unique
+  password  String
+  firstName String? @map("first_name")
+  lastName  String? @map("last_name")
+  age       Int?    @map("age")
 
-  @@map("users")
+    @@map("users")
 }
