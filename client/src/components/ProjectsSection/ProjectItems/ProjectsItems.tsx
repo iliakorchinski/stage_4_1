@@ -11,7 +11,6 @@ export const ProjectsItems = () => {
   const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
   const debouncedSearchTerm = useDebounce(searchTerm);
   const [projects, setProjects] = useState<Project[]>([]);
-  console.log(projects);
 
   useEffect(() => {
     fetchProjects(debouncedSearchTerm, setProjects);
