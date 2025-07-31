@@ -20,6 +20,4 @@ export const login = async (req: Request, res: Response) => {
       secure: false,
     })
     .json({ accessToken });
-
-  // return res.status(200).json({ message: 'Login successful' });
 };

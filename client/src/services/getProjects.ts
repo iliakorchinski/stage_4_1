@@ -15,22 +15,6 @@ export const fetchProjects = async (
       },
     });
 
-    // const accessToken = localStorage.getItem('accessToken');
-
-    // const response = await fetch(
-    //   `http://localhost:3001/api/projects${
-    //     debouncedSearchTerm ? `?search=${debouncedSearchTerm}` : ''
-    //   }`,
-    //   {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       Authorization: `Bearer ${accessToken}`,
-    //     },
-    //     credentials: 'include',
-    //   },
-    // );
-
     if (response.status === 401) {
       window.location.href = '/login';
       return;
