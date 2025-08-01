@@ -1,13 +1,21 @@
-import { JSX } from 'react';
-import { useSelector } from 'react-redux';
+import { JSX, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { RootState } from '../../store/rootReducer';
+import { validateSession } from '../../services/validateSession';
 
 type AuthRequireProps = {
   children: JSX.Element;
 };
 
 export const AuthRequire = ({ children }: AuthRequireProps) => {
-  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    validateSession(setIsAuthenticated);
+  }, []);
+
+  if (isAuthenticated === null) {
+    return null;
+  }
+
   return isAuthenticated ? children : <Navigate to="/login" replace />;
 };

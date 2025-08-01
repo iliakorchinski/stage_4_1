@@ -4,17 +4,21 @@ import { login } from './authSlice';
 export const authThunk = (username: string, password: string) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await fetch('http://localhost:3001/api/login', {
+      const response = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
+        credentials: 'include',
       });
 
       if (!response.ok) {
         throw new Error('Authentication failed');
       }
-
-      dispatch(login());
+      const { accessToken } = await response.json();
+      if (accessToken) {
+        localStorage.setItem('accessToken', accessToken);
+        dispatch(login());
+      }
     } catch (error) {
       throw error;
     }
