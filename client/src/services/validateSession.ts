@@ -1,4 +1,4 @@
-export const checkRefresh = async (
+export const validateSession = async (
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean | null>>,
 ) => {
   try {

@@ -1,6 +1,6 @@
 import { JSX, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { checkRefresh } from '../../services/checkRefresh';
+import { validateSession } from '../../services/validateSession';
 
 type AuthRequireProps = {
   children: JSX.Element;
@@ -10,7 +10,7 @@ export const AuthRequire = ({ children }: AuthRequireProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    checkRefresh(setIsAuthenticated);
+    validateSession(setIsAuthenticated);
   }, []);
 
   if (isAuthenticated === null) {

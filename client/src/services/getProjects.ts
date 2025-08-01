@@ -1,5 +1,5 @@
 import { Project } from '../types/project';
-import { authorizedFetch } from '../utils/authorized-fetch';
+import { secureFetch } from '../utils/secureFetch';
 
 export const fetchProjects = async (
   debouncedSearchTerm: string,
@@ -8,7 +8,7 @@ export const fetchProjects = async (
   try {
     const url = `/api/projects${debouncedSearchTerm ? `?search=${debouncedSearchTerm}` : ''}`;
 
-    const response = await authorizedFetch(url, {
+    const response = await secureFetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
