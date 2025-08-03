@@ -4,8 +4,6 @@ import cookieParser from 'cookie-parser';
 import path from 'path';
 import authRoutes from './routes/authRoutes';
 import projectsRoutes from './routes/projectsRoutes';
-import refreshTokenRoutes from './routes/refreshTokenRoutes';
-import registerRoutes from './routes/registerRoutes';
 
 const app = express();
 const PORT = 3001;
@@ -17,8 +15,6 @@ app.use('/images', express.static(path.join(__dirname, '../public/images')));
 
 app.use('/api', authRoutes);
 app.use('/api', projectsRoutes);
-app.use('/api', refreshTokenRoutes);
-app.use('/api', registerRoutes);
 
 app.listen(PORT, () => {
   console.log(`server is running on http://localhost:${PORT}`);
