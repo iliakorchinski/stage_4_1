@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-export const userSignUp = async (
+export const signUp = async (
   setErrors: (value: React.SetStateAction<Record<string, string>>) => void,
   userData: Record<string, string>,
   navigate: ReturnType<typeof useNavigate>,

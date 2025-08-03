@@ -1,7 +1,7 @@
 import { authThunk } from '../store/authThunk';
 import { AppDispatch } from '../store/store';
 
-export const loginUser = async (
+export const login = async (
   dispatch: AppDispatch,
   username: string,
   password: string,

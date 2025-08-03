@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, useNavigate } from 'react-router-dom';
 import classes from './Auth.module.css';
-import { userSignUp } from '../../services/userSignUp';
+import { signUp } from '../../services/signUp';
 
 export const Auth = () => {
   const initialState = {
@@ -27,7 +27,7 @@ export const Auth = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
-    await userSignUp(setErrors, userData, navigate);
+    await signUp(setErrors, userData, navigate);
   };
 
   return (
