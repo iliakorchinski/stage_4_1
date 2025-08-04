@@ -1,18 +1,22 @@
 import { Request, Response } from 'express';
-import { projects } from '../data/projects';
+import { PrismaClient, Prisma } from '@prisma/client';
 
-export const getProjects = (req: Request, res: Response) => {
+const prisma = new PrismaClient();
+
+export const getProjects = async (req: Request, res: Response) => {
   const search = req.query.search?.toString().toLowerCase();
-
-  if (!search) {
-    return res.json(projects);
+  try {
+    const where: Prisma.projectsWhereInput | undefined = search
+      ? {
+          OR: [
+            { title: { contains: search, mode: 'insensitive' } },
+            { description: { contains: search, mode: 'insensitive' } },
+          ],
+        }
+      : undefined;
+    const projects = await prisma.projects.findMany({ where });
+    res.json(projects);
+  } catch (error) {
+    res.status(500).json({ message: 'Could not fetch projects' });
   }
-
-  const filtered = projects.filter(
-    (item) =>
-      item.title.toLowerCase().includes(search) ||
-      item.description.toLowerCase().includes(search)
-  );
-
-  res.json(filtered);
 };
