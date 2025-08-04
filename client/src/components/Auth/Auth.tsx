@@ -23,7 +23,6 @@ export const Auth = () => {
       [event.target.name]: event.target.value,
     }));
   };
-  console.log(errors);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
