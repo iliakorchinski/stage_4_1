@@ -17,6 +17,6 @@ export const getProjects = async (req: Request, res: Response) => {
     const projects = await prisma.projects.findMany({ where });
     res.json(projects);
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ message: 'Could not fetch projects' });
   }
 };

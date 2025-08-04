@@ -5,6 +5,7 @@ import {
   generateRefreshToken,
   verifyRefreshToken,
 } from '../utils/jwt';
+import { failedAuthStatus } from '../utils/failedAuthStatus';
 import bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
@@ -13,13 +14,13 @@ export const login = async (req: Request, res: Response) => {
   const user = await prisma.user.findUnique({ where: { username } });
 
   if (!user) {
-    return res.status(401).json({ message: 'Invalid credentials' });
+    return failedAuthStatus(res);
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
-    return res.status(401).json({ message: 'Invalid credentials' });
+    failedAuthStatus(res);
   }
 
   const accessToken = generateAccessToken(user.id);
@@ -34,7 +35,7 @@ export const login = async (req: Request, res: Response) => {
     .json({ accessToken });
 };
 
-export const refreshToken = (req: Request, res: Response) => {
+export const renewAccessToken = (req: Request, res: Response) => {
   const token = req.cookies?.refreshToken;
 
   if (!token) {
