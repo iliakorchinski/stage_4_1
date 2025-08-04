@@ -3,7 +3,7 @@ import { Form, useNavigate } from 'react-router-dom';
 import classes from './Login.module.css';
 
 import { useAppDispatch } from '../../store/hooks';
-import { loginUser } from '../../services/userLogin';
+import { login } from '../../services/login';
 
 export const Login = () => {
   const initialState = { username: '', password: '', isError: false };
@@ -24,7 +24,7 @@ export const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    await loginUser(dispatch, userData.username, userData.password)
+    await login(dispatch, userData.username, userData.password)
       .then(() => {
         navigate('/');
       })
