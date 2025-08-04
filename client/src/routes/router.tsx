@@ -2,7 +2,6 @@ import { createBrowserRouter } from 'react-router-dom';
 import { MainLayout } from '../layouts/MainLayout';
 import { HomePage } from '../pages/HomePage';
 import { LoginPage } from '../pages/LoginPage';
-import { AuthRequire } from '../components/AuthRequire/AuthRequire';
 import { AuthPage } from '../pages/AuthPage';
 
 export const enum RoutesPaths {
@@ -18,11 +17,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <AuthRequire>
-            <HomePage />
-          </AuthRequire>
-        ),
+        element: <HomePage />,
       },
     ],
   },

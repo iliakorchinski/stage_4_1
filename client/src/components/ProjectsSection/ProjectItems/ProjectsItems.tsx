@@ -6,14 +6,16 @@ import { RootState } from '../../../store/rootReducer';
 import { useDebounce } from '../../../hooks/useDebouce';
 import { Project } from '../../../types/project';
 import { fetchProjects } from '../../../services/getProjects';
+import { useNavigate } from 'react-router-dom';
 
 export const ProjectsItems = () => {
+  const navigate = useNavigate();
   const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
   const debouncedSearchTerm = useDebounce(searchTerm);
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    fetchProjects(debouncedSearchTerm, setProjects);
+    fetchProjects(debouncedSearchTerm, setProjects, navigate);
   }, [debouncedSearchTerm]);
   return (
     <div className={classes.listContainer}>

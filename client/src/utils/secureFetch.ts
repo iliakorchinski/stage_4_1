@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 const refreshAccessToken = async (): Promise<string | null> => {
   try {
     const res = await fetch('/api/refresh-token', {
@@ -23,12 +25,15 @@ const refreshAccessToken = async (): Promise<string | null> => {
 export const secureFetch = async (
   url: RequestInfo,
   params: RequestInit = {},
+  navigate: ReturnType<typeof useNavigate>,
 ): Promise<Response> => {
   let accessToken = localStorage.getItem('accessToken');
 
   const newToken = await refreshAccessToken();
   if (newToken) {
     accessToken = newToken;
+  } else {
+    navigate('/login');
   }
 
   return fetch(url, {
