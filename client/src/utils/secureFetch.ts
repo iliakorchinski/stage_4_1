@@ -29,19 +29,28 @@ export const secureFetch = async (
 ): Promise<Response> => {
   let accessToken = localStorage.getItem('accessToken');
 
-  const newToken = await refreshAccessToken();
-  if (newToken) {
-    accessToken = newToken;
-  } else {
-    navigate('/login');
+  const makeRequest = async (token: string | null) => {
+    return fetch(url, {
+      ...params,
+      headers: {
+        ...params.headers,
+        Authorization: token ? `Bearer ${token}` : '',
+      },
+      credentials: 'include',
+    });
+  };
+
+  let response = await makeRequest(accessToken);
+
+  if (response.status === 401) {
+    const newToken = await refreshAccessToken();
+
+    if (!newToken) {
+      navigate('/login');
+    }
+
+    response = await makeRequest(newToken);
   }
 
-  return fetch(url, {
-    ...params,
-    headers: {
-      ...params.headers,
-      Authorization: `Bearer ${accessToken}`,
-    },
-    credentials: 'include',
-  });
+  return response;
 };
