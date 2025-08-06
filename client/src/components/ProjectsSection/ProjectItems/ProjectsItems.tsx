@@ -16,7 +16,7 @@ export const ProjectsItems = () => {
 
   useEffect(() => {
     fetchProjects(debouncedSearchTerm, setProjects, navigate);
-  }, [debouncedSearchTerm]);
+  }, [debouncedSearchTerm, navigate]);
   return (
     <div className={classes.listContainer}>
       {projects.length > 0 ? (
