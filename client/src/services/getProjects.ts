@@ -1,24 +1,26 @@
 import { Project } from '../types/project';
 import { secureFetch } from '../utils/secureFetch';
+import { useNavigate } from 'react-router-dom';
 
 export const fetchProjects = async (
   debouncedSearchTerm: string,
   setProjects: (value: React.SetStateAction<Project[]>) => void,
+  navigate: ReturnType<typeof useNavigate>,
 ) => {
   try {
     const url = `/api/projects${debouncedSearchTerm ? `?search=${debouncedSearchTerm}` : ''}`;
 
-    const response = await secureFetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await secureFetch(
+      url,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       },
-    });
+      navigate,
+    );
 
-    if (response.status === 401) {
-      window.location.href = '/login';
-      return;
-    }
     const data = await response.json();
     setProjects(data);
   } catch (err) {
